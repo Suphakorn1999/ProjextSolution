@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Solution</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+        integrity="...">
+</head>
+
+<body>
+    <div style="display: flex; align-items: center; justify-content: center;">
+    <h1>Calculator</h1>
+    </div>
+    <form id="calculatorForm">
+        <div style="display: flex; align-items: center; justify-content: center;">
+
+        <label for="x" style="padding: 10px;">Enter X:</label>
+        <input type="number" id="x" name="x" required>
+
+        <label for="y" style="padding: 10px;">Enter Y:</label>
+        <input type="number" id="y" name="y" required>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <div style="padding: 10px;">
+        <button type="button" onclick="performOperation('add')">Add</button>
+        <button type="button" onclick="performOperation('sub')">Subtract</button>
+        <button type="button" onclick="performOperation('mul')">Multiply</button>
+        <button type="button" onclick="performOperation('div')">Divide</button>
+        </div>
+    </div>
+    </form>
+    <div id="result" style="display: flex; align-items: center; justify-content: center;"></div>
+    <script>
+        let arr = [];
+        function performOperation(operation) {
+            const x = document.getElementById('x').value;
+            const y = document.getElementById('y').value;
+            const url = `http://localhost:3000/${operation}?x=${x}&y=${y}`;
+            const response = axios.post(url);
+            response.then((res) => {
+                arr.push(res.data.result);
+                document.getElementById('result').innerHTML = arr.join('<br>');
+            });
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="..."crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+
+</html>
