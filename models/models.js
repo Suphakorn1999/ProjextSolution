@@ -7,20 +7,18 @@ class Calculator {
         this.y = y;
     }
 
-    add() {
-        return this.x + this.y;
-    }
-
-    sub() {
-        return this.x - this.y;
-    }
-
-    mul() {
-        return this.x * this.y;
-    }
-
-    div() {
-        return this.x / this.y;
+    calculate(operation) {
+        if (operation == 'add') {
+            return this.x + this.y;
+        } else if (operation == 'sub') {
+            return this.x - this.y;
+        } else if (operation == 'mul') {
+            return this.x * this.y;
+        } else if (operation == 'div') {
+            return this.x / this.y;
+        } else {
+            return 'Invalid operation';
+        }
     }
 }
 

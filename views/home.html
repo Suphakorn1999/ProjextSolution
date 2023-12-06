@@ -37,7 +37,7 @@
         function performOperation(operation) {
             const x = document.getElementById('x').value;
             const y = document.getElementById('y').value;
-            const url = `http://localhost:3000/${operation}?x=${x}&y=${y}`;
+            const url = `http://localhost:3000/calculate?operation=${operation}&x=${x}&y=${y}`;
             const response = axios.post(url);
             response.then((res) => {
                 arr.push(res.data.result);
